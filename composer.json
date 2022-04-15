@@ -1,75 +1,36 @@
 {
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
-    "repositories": {
-        "todo": {
-            "type": "path",
-            "url": "packages/Dizaji/ToDo",
-            "options": {
-                "symlink": true
-            }
-        }
-    },
-    "license": "MIT",
-    "require": {
-        "php": "^7.2.5|^8.0",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
-        "laravel/framework": "^7.29",
-        "laravel/tinker": "^2.5"
-    },
-    "require-dev": {
-        "facade/ignition": "^2.0",
-        "fakerphp/faker": "^1.9.1",
-        "mockery/mockery": "^1.3.1",
-        "nunomaduro/collision": "^4.3",
-        "orchestra/testbench": "5",
-        "phpunit/phpunit": "^9.5"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
+    "name": "dizaji/todo",
+    "description": "This package use tdd to create todo list package",
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Dizaji\\ToDo\\": "packages/Dizaji/ToDo/src"
+            "Dizaji\\ToDo\\": "src/",
+            "Dizaji\\ToDo\\Tests\\": "tests/"
         },
         "classmap": [
-            "database/seeds",
-            "database/factories"
+            "src/Migrations"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "Dizaji\\ToDo\\Tests\\": "vendor/dizaji/todo/tests/"
+            "Dizaji\\ToDo\\Tests\\": "tests"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
+    "authors": [
+        {
+            "name": "Akbar Dizaji"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers":[
+                "Dizaji\\ToDo\\src\\ToDoServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.24"
     }
 }
